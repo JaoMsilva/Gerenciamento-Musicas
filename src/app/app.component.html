@@ -1,0 +1,66 @@
+<div class="container">
+  <h1>Cadastro Músicas</h1>
+
+  <div class="form-container">
+    <form>
+      <div class="form-group">
+        <label for="nome">Nome da Música:</label>
+        <input type="text" id="nome" [(ngModel)]="musicaForm.nome" name="nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="album">Álbum:</label>
+        <input type="text" id="album" [(ngModel)]="musicaForm.album" name="album" required>
+      </div>
+
+      <div class="form-group">
+        <label for="cantor">Nome do Cantor:</label>
+        <input type="text" id="cantor" [(ngModel)]="musicaForm.cantor" name="cantor" required>
+      </div>
+
+      <div class="form-group">
+        <label for="duracao">Duração:</label>
+        <input type="text" id="duracao" [(ngModel)]="musicaForm.duracao" name="duracao" required>
+      </div>
+
+      <div class="form-group">
+        <label for="dataLancamento">Data de Lançamento:</label>
+        <input type="date" id="dataLancamento" [(ngModel)]="musicaForm.dataLancamento" name="dataLancamento" required>
+      </div>
+
+      <div class="buttons">
+        <button type="submit" (click)="salvarMusica()" [disabled]="!musicaForm.nome || !musicaForm.cantor || !musicaForm.dataLancamento || !musicaForm.album || !musicaForm.duracao">{{ isEdicao ? 'Atualizar' : 'Salvar' }}</button>
+        <button type="button" (click)="limparForm()">Limpar</button>
+        <button type="button" (click)="cancelar()" [disabled]="!isEdicao">Cancelar</button>
+      </div>
+    </form>
+  </div>
+
+  <table class="musica-table">
+    <thead>
+      <tr>
+        <th>Nome da Música</th>
+        <th>Álbum </th>
+        <th>Cantor</th>
+        <th>Duração</th>
+        <th>Data de Lançamento</th>
+        <th>Edição</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let musica of musicas">
+        <td>{{ musica.nome }}</td>
+        <td>{{ musica.album }}</td>
+        <td>{{ musica.cantor }}</td>
+        <td>{{ musica.duracao }}</td>
+        <td>{{ transformDate(musica.dataLancamento) }}</td>
+        <td>
+
+          <button class="botao" (click)="editarMusica(musica.id!)">Editar</button>
+
+          <button class="botao" style="margin-right: 0;" (click)="excluirMusica(musica.id!)">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
