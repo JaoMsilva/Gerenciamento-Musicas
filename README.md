@@ -18,3 +18,4 @@ Após rodar ambos os servidores, o sistema estará disponível para uso no naveg
 ## Tecnologias utilizadas
 * Angular: Interface do usuário moderna e dinâmica.
 * Java (Spring Boot): Desenvolvimento do back-end robusto.
+* MySql: Desenvolvimento do banco de dados (Crud).
